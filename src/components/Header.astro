@@ -1,8 +1,36 @@
 ---
+interface MenuItem {
+  title: string
+  link: string
+}
+
+interface Props {
+  menu: MenuItem[]
+}
+
+const { menu } = Astro.props
+const active = Astro.url.pathname.replace(/\/$/, '') || '/'
 ---
 
 <div class="navbar">
-  <a href="/">UEC太郎のページ</a>
+  <a href="/" class="top-link">UEC太郎のページ</a>
+  <ul class="menu">
+    {menu.map((item: MenuItem) => (
+      <>
+        {item.link == active ?
+          <li class="item item-active">
+            {item.title}
+          </li>
+        :
+          <li>
+            <a href={item.link} class="item item-deactive">
+              {item.title}
+            </a>
+          </li>
+        }
+      </>
+    ))}
+  </ul>
 </div>
 
 <style>
@@ -11,9 +39,42 @@
     text-align: center;
     background-color: var(--color-bg-2);
   }
-  .navbar a {
+  .top-link {
     font-size: 1.5rem;
     font-weight: bold;
+    text-decoration: none;
+    color: inherit;
+  }
+  .menu {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0 0 0;
+    justify-content: center;
+    align-items: start;
+  }
+  @media (max-width: 1024px) {
+    .menu {
+      display: flex;
+    }
+  }
+  .item {
+    margin: 0 1rem;
+  }
+  .item-active {
+    font-weight: bold;
+  }
+  .item-active:after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 5px;
+    border-radius: 5px;
+    background-color: var(--color-accent);
+    margin: 0.25rem auto 0 auto;
+  }
+  .item-deactive {
+    display: block;
     text-decoration: none;
     color: inherit;
   }
