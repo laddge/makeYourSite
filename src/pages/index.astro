@@ -1,8 +1,43 @@
 ---
+import { Picture } from 'astro:assets'
 import Layout from '../layouts/Layout.astro'
+import Card from '../components/Card.astro'
+import profileImg from '../assets/profile.png'
 ---
 
 <Layout title="UEC太郎のページ" description="とある大学生のプロフィール">
-  <h2>自己紹介</h2>
-  <p>hello, world</p>
+  <Card>
+    <div class="text-center">
+      <Picture
+          src={profileImg}
+          alt="プロフィール画像"
+          formats={['avif', 'webp']}
+          loading="eager"
+          class="profile-img"
+          />
+          <div class="name"><span>UEC太郎</span></div>
+    </div>
+  </Card>
 </Layout>
+
+<style>
+  .text-center {
+    text-align: center;
+  }
+  .profile-img {
+    width: 25vw;
+    height: 25vw;
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 100%;
+    border: 3px solid var(--color-accent);
+  }
+  .name {
+    margin-top: 1rem;
+    font-size: 1.33rem;
+  }
+  .name span {
+    padding: 0 0.25rem;
+    border-bottom: 5px solid var(--color-accent);
+  }
+</style>
