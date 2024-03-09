@@ -1,0 +1,67 @@
+---
+import Card from './Card.astro'
+
+interface MenuItem {
+  title: string
+  link: string
+}
+
+interface Props {
+  menu: MenuItem[]
+}
+
+const { menu } = Astro.props
+const active = Astro.url.pathname.replace(/\/$/, '') || '/'
+---
+
+<Card>
+  <div class="menu-title">メニュー</div>
+  <ul class="menu">
+    {menu.map((item: MenuItem) => (
+      <>
+        {item.link == active ?
+          <li class="item item-active">
+            {item.title}
+          </li>
+        :
+          <li>
+            <a href={item.link} class="item item-deactive">
+              {item.title}
+            </a>
+          </li>
+        }
+      </>
+    ))}
+  </ul>
+</Card>
+
+<style>
+  .menu-title {
+    font-size: 1.33rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  .menu {
+    font-size: 1.25rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .item {
+    display: block;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border-radius: var(--corner-radius);
+  }
+  .item-active {
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+  .item-deactive {
+    text-decoration: none;
+    color: inherit;
+  }
+  .item-deactive:hover {
+    background-color: var(--color-bg-3);
+  }
+</style>

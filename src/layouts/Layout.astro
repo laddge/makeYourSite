@@ -3,6 +3,7 @@ import 'modern-normalize/modern-normalize.css'
 import '../global.css'
 
 import Header from '../components/Header.astro'
+import SideMenu from '../components/SideMenu.astro'
 import Footer from '../components/Footer.astro'
 
 interface Props {
@@ -10,7 +11,17 @@ interface Props {
   description: string
 }
 
+interface MenuItem {
+  title: string
+  link: string
+}
+
 const { title, description } = Astro.props
+const menu: MenuItem[] = [
+  { title: 'ホーム', link: '/' },
+  { title: '自己紹介', link: '/about' },
+  { title: 'SNS', link: '/social' },
+]
 ---
 
 <html lang="ja">
@@ -29,6 +40,7 @@ const { title, description } = Astro.props
         <slot />
       </div>
       <div class="sidebar">
+        <SideMenu menu={menu} />
       </div>
     </div>
     <div class="sticky-footer">

@@ -1,8 +1,10 @@
 :root {
   --color-bg-1: #f0f9ff;
   --color-bg-2: #e0f2fe;
+  --color-bg-3: #bae6fd;
   --color-text: #020617;
   --color-accent: #0ea5e9;
+  --color-on-accent: #f0f9ff;
   --color-link: #0284c7;
   --corner-radius: 0.75rem;
 }
