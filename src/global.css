@@ -3,6 +3,7 @@
   --color-bg-2: #e0f2fe;
   --color-text: #020617;
   --color-accent: #0ea5e9;
+  --color-link: #0284c7;
   --corner-radius: 0.75rem;
 }
 
@@ -11,17 +12,13 @@ body {
   color: var(--color-text);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
 h2 {
+  margin: 0;
   padding: 0.75rem;
   background-color: var(--color-bg-2);
   border-radius: var(--corner-radius);
+}
+
+a {
+  color: var(--color-link);
 }
