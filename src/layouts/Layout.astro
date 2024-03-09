@@ -2,6 +2,7 @@
 import 'modern-normalize/modern-normalize.css'
 
 import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
 
 interface Props {
   title: string
@@ -25,13 +26,27 @@ const { title, description } = Astro.props
     <div class="container">
       <slot />
     </div>
+    <div class="sticky-footer">
+      <Footer />
+    </div>
 	</body>
 </html>
 
 <style>
+  html {
+    height: 100%;
+  }
+  body {
+    height: 100%;
+  }
   .container {
     padding: 1.5rem;
     max-width: 1024px;
     margin: 0 auto;
+  }
+  .sticky-footer {
+    position: sticky;
+    top: 100vh;
+    top: 100dvh;
   }
 </style>
