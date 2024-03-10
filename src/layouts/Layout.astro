@@ -17,6 +17,7 @@ interface MenuItem {
 }
 
 const { title, description } = Astro.props
+const siteName = 'UEC太郎のページ'
 const url = 'https://uectaro.laddge.net'
 const menu: MenuItem[] = [
   { title: 'ホーム', link: '/' },
@@ -33,7 +34,7 @@ const menu: MenuItem[] = [
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <meta property="og:site_name" content="サイト名">
+    <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
